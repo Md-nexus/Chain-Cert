@@ -1,56 +1,34 @@
-# Dependencies
+# Node Dependencies
 node_modules/
-.pnp
-.pnp.js
+jspm_packages/
 
-# Testing
-coverage/
-
-# Production
+# Production Distribution Bundles
 dist/
 build/
 
-# Misc
-.DS_Store
-*.pem
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# Local env files
+# Local Environment Asset Blocks
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Vite
-.vite/
+# Operating System Cache Artifacts
+.DS_Store
+Thumbs.db
 
-# Solidity / Hardhat / Truffle
-artifacts/
-cache/
-typechain/
-typechain-types/
-*.db
-.openzeppelin/
+# Diagnostic Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# IDE Settings
-.vscode/
-.idea/
-*.swp
-*.swo
-.project
-.settings/
-.classpath
-
-# Planning and Instructions
-n.md
+# --- Project-Specific Internal Files ---
+# Files that are only necessary for the person building/maintaining the project
+# (instructions, ideas, specifications, etc.)
+repo-cleanup-spec.md
+*-spec.md
 plan.md
-spec.md
 instructions.md
-# Add any markdown files that are just for internal planning
-# (Note: keeping README.md as it's standard for repositories)
+ideas.md
+*.todo
+n.md
