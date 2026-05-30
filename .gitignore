@@ -46,3 +46,11 @@ typechain-types/
 .project
 .settings/
 .classpath
+
+# Planning and Instructions
+n.md
+plan.md
+spec.md
+instructions.md
+# Add any markdown files that are just for internal planning
+# (Note: keeping README.md as it's standard for repositories)
