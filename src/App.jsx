@@ -4,7 +4,7 @@ import { calculateFileHash } from './utils/crypto';
 import contractAbi from './abi.json';
 
 // Paste your deployed smart contract address here after deployment
-const CONTRACT_ADDRESS = "0xd9145CCE52D386f254917e481eB44e9943F39138"
+const CONTRACT_ADDRESS = "0xb8d37B90F9D8c6329301E7759aa63ee9Aa4B0656"
 
 function App() {
     const [activeTab, setActiveTab] = useState('verify'); // 'verify' or 'issue'
