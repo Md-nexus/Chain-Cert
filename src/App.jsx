@@ -3,8 +3,7 @@ import { ethers } from 'ethers';
 import { calculateFileHash } from './utils/crypto';
 import contractAbi from './abi.json';
 
-// Paste your deployed smart contract address here after deployment
-const CONTRACT_ADDRESS = "0xb8d37B90F9D8c6329301E7759aa63ee9Aa4B0656"
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS || "0x0000000000000000000000000000000000000000";
 
 function App() {
     const [activeTab, setActiveTab] = useState('verify'); // 'verify' or 'issue'

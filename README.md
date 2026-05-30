@@ -54,10 +54,9 @@ npm install
 2. Compile using a target version of `0.8.20` or higher.
 3. Switch your deployment network tab to **Injected Provider - MetaMask** (Ensure your wallet extension is explicitly set to the **Sepolia Test Network**).
 4. Deploy the contract and duplicate the resulting deployed hash string.
-5. Open your local project directory, navigate to `src/App.jsx`, and patch your custom address line:
-
-```javascript
-const CONTRACT_ADDRESS = "YOUR_DEPLOYED_CONTRACT_ADDRESS_HERE";
+5. **Configure your environment**: Duplicate the `.env.example` file and rename it to `.env`, then patch your live contract address:
+```text
+VITE_CONTRACT_ADDRESS="YOUR_DEPLOYED_CONTRACT_ADDRESS_HERE"
 ```
 
 ### 4. Execute Local Development Subsystems
@@ -105,22 +104,23 @@ Standard faucets (like Alchemy or QuickNode) enforce an "Anti-Sybil" check requi
 8. Confirm the gas transaction inside your MetaMask popup wallet.
 
 ### Step 4: Handling False-Positive Security Interceptions
-Because you are interacting with a brand-new, unverified smart contract with zero global transaction history, MetaMask's automated security filter (**Blockaid**) will flag your transaction with a red warning screen reading: *"This is a deceptive request... a third party known for scams will take all your assets."*
-
 **This is a false positive.** Your assets are completely secure. To authorize your contract deployment and function interactions, choose one of these routes:
 * **The Quick Bypass:** On the warning banner, click **"See details"** ➡️ **"Proceed anyway"** or **"Continue at your own risk"**. This unlocks the standard verification screen, allowing you to click **Confirm**.
 * **The Permanent Developer Tweak:** If you are actively modifying code and want to suppress recurrent alerts: Open MetaMask ➡️ **Settings** ➡️ **Security & Privacy** ➡️ Scroll down and switch the **"Security Alerts" (Powered by Blockaid)** toggle to **OFF**. *(Remember to turn this back on when interacting with untrusted, live web environments).*
 
-### Step 5: Frontend Configuration & Compilation
-1. Once the contract deployment transaction is confirmed, navigate to the bottom left of the Remix sidebar under **Deployed Contracts**. Click the **Copy** icon next to the contract entry to grab your live address string.
-2. Open your local project code directory and open `src/App.jsx`.
-3. Locate the contract definition on line 7:
-```javascript
-   const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000";
-```
-Replace the placeholder string with your live deployed contract address and save the file.
+### Step 5: Frontend Configuration & Blockchain Synchronization
 
-Synchronize local workspace project dependencies and execute the development server:
+To connect your frontend to your newly deployed smart contract, follow this configuration procedure:
+
+1. **Initialize your local environment file**: In the root directory of your project, locate the file named `.env.example`.
+2. **Create your private .env**: Duplicate `.env.example` and rename the copy to exactly `.env`. (This file is already ignored by git to keep your address private).
+3. **Apply your contract address**: Open your new `.env` file and paste your live deployed contract address:
+   ```text
+   VITE_CONTRACT_ADDRESS=0xYourActualDeployedContractAddressHere
+   ```
+4. **Save and Synchronize**: Your application is pre-configured to detect this address automatically upon startup.
+
+Once the address is set, synchronize local workspace project dependencies and execute the development server:
 
 ```bash
 npm install
@@ -146,6 +146,15 @@ If your hosted Netlify site prompts visitors for a site-wide password, or locks 
 
 - **Remedy A: Eliminate Anonymous Drops**: Anonymous uploads via Netlify Drop often expire or require authorization checks. Go to [app.netlify.com](https://app.netlify.com), create a free account, log in, navigate to your team dashboard, click **Add New Site**, and drag your `/dist` folder into the secure upload drop zone. This guarantees a clean, public link with no password requirement.
 - **Remedy B: Purge Inherited Auth Configuration Boilerplates**: Check your repository's root folder and `/public` folder for an inherited file named `_headers`. If this file contains a line defining `Basic-Auth: user:password`, it will force a password challenge on production builds. Delete the `_headers` file, execute `npm run build` again, and re-upload your distribution assets.
+
+3. **Configure Environment Variables in Netlify**
+Since your public GitHub repository does not contain the contract address in the source code, you must provide it to Netlify via their dashboard so it is available during the build process:
+
+1. Go to your **Netlify Dashboard** and click on your project.
+2. Navigate to **Project configuration** ➡️ **Environment variables**.
+3. Click **Add a variable** ➡️ **Add a single variable**.
+4. Set the **Key** as `VITE_CONTRACT_ADDRESS` and paste your live contract address as the **Value**.
+5. Trigger a new deploy (if using Git) or execute `npm run build` locally and re-drop the `/dist` folder.
 
 ---
 
