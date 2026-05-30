@@ -3,11 +3,11 @@
 [![License: Custom Non-Commercial](https://img.shields.io/badge/License-Non--Commercial_&_Attribution-red.svg)](#-license-architecture)
 [![Network: Ethereum Sepolia](https://img.shields.io/badge/Network-Ethereum_Sepolia-purple.svg)](https://sepolia.etherscan.io/)
 [![Frontend: React + Vite](https://img.shields.io/badge/Frontend-React_18_%2B_Vite-cyan.svg)](https://vitejs.dev/)
-[![Deployment: Netlify](https://img.shields.io/badge/Deployment-Netlify-00AD9F.svg)](https://stirring-concha-e69322.netlify.app/)
+[![Deployment: Netlify](https://img.shields.io/badge/Deployment-Netlify-00AD9F.svg)](https://chain-cert.netlify.app/)
 
 An immutable, decentralized application (dApp) engineered to eliminate credential and certificate fraud. **ChainCert** anchors digital credentials securely to the blockchain. By leveraging client-side cryptographic hashing, the protocol guarantees absolute data privacy while offering instant, single-click verification without centralized intermediaries.
 
-🚀 **Live Production Demo:** [Launch ChainCert App](https://stirring-concha-e69322.netlify.app/)
+🚀 **Live Production Demo:** [Launch ChainCert App](https://chain-cert.netlify.app/)
 
 ---
 
